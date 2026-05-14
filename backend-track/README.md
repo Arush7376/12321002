@@ -1,12 +1,14 @@
 # backend-track
 
-Production-grade Django backend starter for Backend Track evaluation work. The repository contains two modular DRF services and a reusable request logging middleware package.
+Production-grade Django backend starter for Backend Track evaluation work. The repository contains two modular DRF services, centralized structured logging, Docker orchestration, and a reusable request logging middleware package.
 
 ## Projects
 
 - `vehicle_maintenance_scheduler`: vehicle CRUD and maintenance scheduler foundation.
 - `notification_app_be`: queue-driven notification system foundation.
-- `logging_middleware`: reusable Django middleware for structured request logging.
+- `logging_middleware`: reusable Django middleware for structured JSON request logging.
+- `docs`: architecture and extension notes.
+- `screenshots`: evaluation screenshots and API proof captures.
 
 ## Setup
 
@@ -23,8 +25,8 @@ Update `.env` with PostgreSQL, Redis, and Django secrets.
 ## Run Locally
 
 ```bash
-python vehicle_maintenance_scheduler/manage.py migrate
-python vehicle_maintenance_scheduler/manage.py runserver 0.0.0.0:8000
+python vehicle_maintenance_scheduler/src/manage.py migrate
+python vehicle_maintenance_scheduler/src/manage.py runserver 0.0.0.0:8000
 ```
 
 Health check: `GET http://localhost:8000/api/v1/health/`
@@ -35,7 +37,7 @@ Swagger: `http://localhost:8000/swagger/`
 
 ```bash
 cd vehicle_maintenance_scheduler
-celery -A src.config worker --loglevel=info
+celery -A config worker --loglevel=info
 ```
 
 ## Docker
@@ -48,7 +50,7 @@ docker compose up --build
 ## Production Command
 
 ```bash
-gunicorn vehicle_maintenance_scheduler.src.config.wsgi:application --chdir vehicle_maintenance_scheduler --bind 0.0.0.0:8000 --workers 3
+gunicorn config.wsgi:application --chdir vehicle_maintenance_scheduler/src --bind 0.0.0.0:8000 --workers 3
 ```
 
 ## Environment Variables
@@ -61,6 +63,7 @@ gunicorn vehicle_maintenance_scheduler.src.config.wsgi:application --chdir vehic
 - `REDIS_URL`
 - `CELERY_BROKER_URL`, `CELERY_RESULT_BACKEND`
 - `LOG_LEVEL`
+- `DJANGO_ENV`
 
 ## Root Structure
 
@@ -69,6 +72,8 @@ backend-track/
   logging_middleware/
   vehicle_maintenance_scheduler/
   notification_app_be/
+  screenshots/
+  docs/
   notification_system_design.md
   Dockerfile
   docker-compose.yml
@@ -77,3 +82,11 @@ backend-track/
   .gitignore
   README.md
 ```
+
+## Logging Architecture
+
+All API and middleware logs flow through centralized Python loggers configured in Django settings. Request logs are JSON formatted and written with `RotatingFileHandler` to `logs/app.log`. The request middleware records method, endpoint, status code, response time, timestamp, request ID, client IP, and exception details.
+
+## Architecture Readiness
+
+The services are prepared for JWT auth, scheduler engines, notification queues, websocket notifications, Redis caching, provider clients, and optimization algorithms through dedicated packages under each service's `src/` directory.

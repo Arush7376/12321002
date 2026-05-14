@@ -10,8 +10,8 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 copy .env.example .env
-python vehicle_maintenance_scheduler/manage.py migrate
-python vehicle_maintenance_scheduler/manage.py runserver 0.0.0.0:8000
+python vehicle_maintenance_scheduler/src/manage.py migrate
+python vehicle_maintenance_scheduler/src/manage.py runserver 0.0.0.0:8000
 ```
 
 ## API
@@ -25,7 +25,8 @@ python vehicle_maintenance_scheduler/manage.py runserver 0.0.0.0:8000
 
 ```bash
 cd vehicle_maintenance_scheduler
-celery -A src.config worker --loglevel=info
+cd vehicle_maintenance_scheduler/src
+celery -A config worker --loglevel=info
 ```
 
 ## Structure
@@ -37,10 +38,11 @@ src/
   api/
   services/
   repositories/
-  middlewares/
+  middleware/
   validators/
   serializers/
   permissions/
+  clients/
   schedulers/
   utils/
   config/
@@ -50,3 +52,7 @@ src/
 ## Future Modules
 
 Prepared for JWT authentication, vehicle CRUD APIs, maintenance scheduler APIs, background jobs, and API permissions.
+
+## Logging
+
+Structured JSON request logs are written to `logs/app.log` by the shared `logging_middleware` package. APIs should obtain loggers through `logging_middleware.logger.get_logger()`.

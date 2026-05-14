@@ -1,6 +1,6 @@
 from rest_framework.pagination import PageNumberPagination
 
-from src.core.responses import success_response
+from core.responses import success_response
 
 
 class StandardResultsSetPagination(PageNumberPagination):

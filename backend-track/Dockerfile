@@ -16,4 +16,4 @@ RUN pip install --upgrade pip && pip install -r /app/requirements.txt
 COPY . /app
 
 EXPOSE 8000
-CMD ["gunicorn", "vehicle_maintenance_scheduler.src.config.wsgi:application", "--bind", "0.0.0.0:8000", "--chdir", "/app/vehicle_maintenance_scheduler", "--workers", "3"]
+CMD ["gunicorn", "config.wsgi:application", "--chdir", "/app/vehicle_maintenance_scheduler/src", "--bind", "0.0.0.0:8000", "--workers", "3"]

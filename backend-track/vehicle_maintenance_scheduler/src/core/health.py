@@ -3,7 +3,7 @@ from django.db.utils import OperationalError
 from django.utils import timezone
 from rest_framework.views import APIView
 
-from src.core.responses import success_response
+from core.responses import success_response
 
 
 class HealthCheckView(APIView):

@@ -10,7 +10,7 @@ Reusable Django middleware for request/response logging.
 - UTC timestamp
 - Client IP address
 - Exception stack traces
-- File logging to `logs/app.log` through Django logging configuration
+- Structured JSON file logging to `logs/app.log` through Django logging configuration
 
 ## Usage
 
@@ -23,3 +23,5 @@ MIDDLEWARE = [
 ```
 
 Configure a `request_logger` logger in Django settings. The starter services already write to `logs/app.log`.
+
+The package exposes `logging_middleware.logger.get_logger()` so APIs use centralized logging configuration instead of direct console logging.

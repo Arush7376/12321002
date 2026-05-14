@@ -49,9 +49,9 @@ MIDDLEWARE = [
     "logging_middleware.middleware.RequestResponseLoggingMiddleware",
 ]
 
-ROOT_URLCONF = "src.config.urls"
-WSGI_APPLICATION = "src.config.wsgi.application"
-ASGI_APPLICATION = "src.config.asgi.application"
+ROOT_URLCONF = "config.urls"
+WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
 
 TEMPLATES = [
     {
@@ -98,9 +98,9 @@ REST_FRAMEWORK = {
     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.URLPathVersioning",
     "DEFAULT_VERSION": "v1",
     "ALLOWED_VERSIONS": ["v1"],
-    "DEFAULT_PAGINATION_CLASS": "src.core.pagination.StandardResultsSetPagination",
+    "DEFAULT_PAGINATION_CLASS": "core.pagination.StandardResultsSetPagination",
     "PAGE_SIZE": 20,
-    "EXCEPTION_HANDLER": "src.core.exception_handler.custom_exception_handler",
+    "EXCEPTION_HANDLER": "core.exception_handler.custom_exception_handler",
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -129,27 +129,25 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-        "standard": {
-            "format": "%(asctime)s %(levelname)s [%(name)s] %(message)s",
+        "json": {
+            "()": "logging_middleware.formatter.JsonLogFormatter",
         },
     },
     "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "formatter": "standard",
-        },
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": LOG_DIR / "app.log",
             "maxBytes": 10 * 1024 * 1024,
             "backupCount": 5,
-            "formatter": "standard",
+            "formatter": "json",
         },
     },
     "loggers": {
-        "django": {"handlers": ["console", "file"], "level": LOG_LEVEL, "propagate": False},
-        "request_logger": {"handlers": ["console", "file"], "level": LOG_LEVEL, "propagate": False},
-        "src": {"handlers": ["console", "file"], "level": LOG_LEVEL, "propagate": False},
+        "django": {"handlers": ["file"], "level": LOG_LEVEL, "propagate": False},
+        "request_logger": {"handlers": ["file"], "level": LOG_LEVEL, "propagate": False},
+        "api": {"handlers": ["file"], "level": LOG_LEVEL, "propagate": False},
+        "core": {"handlers": ["file"], "level": LOG_LEVEL, "propagate": False},
+        "config": {"handlers": ["file"], "level": LOG_LEVEL, "propagate": False},
     },
 }
 

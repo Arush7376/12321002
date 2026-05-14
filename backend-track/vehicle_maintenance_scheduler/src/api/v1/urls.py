@@ -1,6 +1,6 @@
 from django.urls import path
 
-from src.core.health import HealthCheckView
+from core.health import HealthCheckView
 
 
 app_name = "api_v1"

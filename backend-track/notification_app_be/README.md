@@ -10,8 +10,8 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 copy .env.example .env
-python notification_app_be/manage.py migrate
-python notification_app_be/manage.py runserver 0.0.0.0:8001
+python notification_app_be/src/manage.py migrate
+python notification_app_be/src/manage.py runserver 0.0.0.0:8001
 ```
 
 ## API
@@ -25,7 +25,8 @@ python notification_app_be/manage.py runserver 0.0.0.0:8001
 
 ```bash
 cd notification_app_be
-celery -A src.config worker --loglevel=info
+cd notification_app_be/src
+celery -A config worker --loglevel=info
 ```
 
 ## Structure
@@ -37,10 +38,11 @@ src/
   api/
   services/
   repositories/
-  middlewares/
+  middleware/
   validators/
   serializers/
   permissions/
+  clients/
   schedulers/
   utils/
   config/
@@ -50,3 +52,7 @@ src/
 ## Future Modules
 
 Prepared for notification queues, email/SMS provider adapters, websocket notifications, retry policies, and delivery status tracking.
+
+## Logging
+
+Structured JSON request logs are written to `logs/app.log` by the shared `logging_middleware` package. APIs should obtain loggers through `logging_middleware.logger.get_logger()`.

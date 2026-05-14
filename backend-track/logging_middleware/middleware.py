@@ -1,9 +1,11 @@
-import logging
 import time
 from datetime import UTC, datetime
 
+from logging_middleware.logger import get_logger
+from logging_middleware.utils import get_client_ip, get_or_create_request_id
 
-logger = logging.getLogger("request_logger")
+
+logger = get_logger("request_logger")
 
 
 class RequestResponseLoggingMiddleware:
@@ -15,39 +17,42 @@ class RequestResponseLoggingMiddleware:
     def __call__(self, request):
         start_time = time.perf_counter()
         timestamp = datetime.now(UTC).isoformat()
-        client_ip = self._get_client_ip(request)
+        client_ip = get_client_ip(request)
+        request_id = get_or_create_request_id(request)
 
         try:
             response = self.get_response(request)
         except Exception as exc:
             duration_ms = round((time.perf_counter() - start_time) * 1000, 2)
-            logger.exception(
-                "request_error method=%s path=%s status_code=%s duration_ms=%s timestamp=%s client_ip=%s error=%s",
-                request.method,
-                request.get_full_path(),
-                500,
-                duration_ms,
-                timestamp,
-                client_ip,
-                exc,
+            logger.error(
+                "request_error",
+                extra={
+                    "request_id": request_id,
+                    "method": request.method,
+                    "endpoint": request.get_full_path(),
+                    "status_code": 500,
+                    "response_time_ms": duration_ms,
+                    "timestamp": timestamp,
+                    "client_ip": client_ip,
+                    "error": str(exc),
+                },
+                exc_info=True,
             )
             raise
 
         duration_ms = round((time.perf_counter() - start_time) * 1000, 2)
+        response["X-Request-ID"] = request_id
         logger.info(
-            "request_completed method=%s path=%s status_code=%s duration_ms=%s timestamp=%s client_ip=%s",
-            request.method,
-            request.get_full_path(),
-            response.status_code,
-            duration_ms,
-            timestamp,
-            client_ip,
+            "request_completed",
+            extra={
+                "request_id": request_id,
+                "method": request.method,
+                "endpoint": request.get_full_path(),
+                "status_code": response.status_code,
+                "response_time_ms": duration_ms,
+                "timestamp": timestamp,
+                "client_ip": client_ip,
+                "error": None,
+            },
         )
         return response
-
-    @staticmethod
-    def _get_client_ip(request):
-        forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
-        if forwarded_for:
-            return forwarded_for.split(",")[0].strip()
-        return request.META.get("REMOTE_ADDR", "")

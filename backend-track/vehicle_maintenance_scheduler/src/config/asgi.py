@@ -5,8 +5,10 @@ from pathlib import Path
 from django.core.asgi import get_asgi_application
 
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(BASE_DIR.parent))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "src.config.settings.production")
+REPO_ROOT = Path(__file__).resolve().parents[3]
+SERVICE_SRC = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SERVICE_SRC))
+sys.path.insert(0, str(REPO_ROOT))
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 
 application = get_asgi_application()

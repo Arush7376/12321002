@@ -1,12 +1,11 @@
-import logging
-
 from rest_framework import status
 from rest_framework.views import exception_handler
 
-from src.core.responses import error_response
+from logging_middleware.logger import get_logger
+from core.responses import error_response
 
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 def custom_exception_handler(exc, context):

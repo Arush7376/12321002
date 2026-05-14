@@ -1,0 +1,14 @@
+.git
+.idea
+.vscode
+venv
+.venv
+__pycache__
+*.pyc
+.env
+logs
+media
+staticfiles
+.pytest_cache
+.mypy_cache
+.ruff_cache
