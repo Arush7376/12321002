@@ -31,3 +31,14 @@ Placeholder for AWS, Render, Railway, Docker, CI/CD, migrations, static files, a
 ## Monitoring
 
 Placeholder for structured logs, metrics, traces, Celery queue depth, retry rate, provider error rate, alerting, and dashboards.
+
+## Stage 6: Priority Inbox
+
+The priority inbox ranks unread notifications using a two-part score:
+
+1. Notification type weight: `Placement` > `Result` > `Event`
+2. Recency: newer notifications rank higher within the same type
+
+The implementation uses a bounded min-heap of size `n` to maintain the current top notifications efficiently as new notifications arrive. For each incoming notification, compute `(type_weight, timestamp)` and compare it with the lowest-ranked item in the heap. If the new item is better, evict the heap root and insert the new notification.
+
+This keeps memory bounded to `O(n)` and updates each incoming notification in `O(log n)`, which is efficient for a continuously arriving stream where only the top 10 must be displayed.

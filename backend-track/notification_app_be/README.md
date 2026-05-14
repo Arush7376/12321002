@@ -56,3 +56,7 @@ Prepared for notification queues, email/SMS provider adapters, websocket notific
 ## Logging
 
 Structured JSON request logs are written to `logs/app.log` by the shared `logging_middleware` package. APIs should obtain loggers through `logging_middleware.logger.get_logger()`.
+
+## Stage 6 Priority Inbox
+
+The priority inbox implementation lives in `src/services/priority_inbox.py`. It ranks notifications by `Placement > Result > Event`, then by newest timestamp within the same type. Fetched API responses and computed top-10 output are stored in `priority_inbox/`.

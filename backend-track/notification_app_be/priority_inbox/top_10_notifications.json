@@ -1,0 +1,66 @@
+{
+  "rankingRule": "Placement > Result > Event, then newest timestamp first",
+  "count": 10,
+  "notifications": [
+    {
+      "ID": "6d46a35c-4559-4ed0-a921-c76abd74849f",
+      "Type": "Placement",
+      "Message": "Broadcom Inc. hiring",
+      "Timestamp": "2026-05-14 07:50:56"
+    },
+    {
+      "ID": "f4d8f486-6914-4ce3-b357-bc81ae9e362d",
+      "Type": "Placement",
+      "Message": "Broadcom Inc. hiring",
+      "Timestamp": "2026-05-14 05:22:38"
+    },
+    {
+      "ID": "97d15a75-4203-4b9b-a0cb-7f7ca205c32a",
+      "Type": "Placement",
+      "Message": "Marriott International Inc. hiring",
+      "Timestamp": "2026-05-14 00:51:13"
+    },
+    {
+      "ID": "1188db44-26bb-4c88-afce-1ed6f126a0cf",
+      "Type": "Placement",
+      "Message": "Meta Platforms Inc. hiring",
+      "Timestamp": "2026-05-13 23:50:05"
+    },
+    {
+      "ID": "a6ad2c38-7f16-4951-8784-3409d92b3a0d",
+      "Type": "Placement",
+      "Message": "Booking Holdings Inc. hiring",
+      "Timestamp": "2026-05-13 22:22:04"
+    },
+    {
+      "ID": "a0dd13c9-daab-4bdc-8062-422119d6fe96",
+      "Type": "Placement",
+      "Message": "Nvidia Corporation hiring",
+      "Timestamp": "2026-05-13 18:54:54"
+    },
+    {
+      "ID": "2dfa89f9-1ecd-4716-b791-6cbdf1ec2371",
+      "Type": "Placement",
+      "Message": "Advanced Micro Devices Inc. hiring",
+      "Timestamp": "2026-05-13 14:23:46"
+    },
+    {
+      "ID": "0f78f4cd-418a-48d3-a14c-4fd40232f604",
+      "Type": "Placement",
+      "Message": "Apple Inc. hiring",
+      "Timestamp": "2026-05-13 11:53:29"
+    },
+    {
+      "ID": "feb6167c-1cae-4bfb-8996-36ff59c16cc0",
+      "Type": "Result",
+      "Message": "mid-sem",
+      "Timestamp": "2026-05-14 09:24:20"
+    },
+    {
+      "ID": "9812ffd0-40df-4231-8979-e26958ec6646",
+      "Type": "Result",
+      "Message": "project-review",
+      "Timestamp": "2026-05-14 03:50:22"
+    }
+  ]
+}

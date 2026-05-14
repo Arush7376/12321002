@@ -1,0 +1,289 @@
+{
+  "algorithm": "0/1 knapsack dynamic programming",
+  "depotSchedules": [
+    {
+      "depotId": 1,
+      "mechanicHours": 60,
+      "totalDuration": 60,
+      "totalImpact": 113,
+      "selectedTaskIds": [
+        "63a2b448-f810-477a-9227-903298c876ff",
+        "927d8a95-9c87-4fbd-8b76-e4e70ced6bf2",
+        "098d21d7-fe3c-4ae6-a816-8b43da352e93",
+        "628064f6-c040-42b1-b199-bfc3c41ac53d",
+        "c1fae250-d2a3-4993-b634-0f1e7013e18c",
+        "2b5c4b27-a6a6-48f2-85b1-0ed21b9620b1",
+        "dd9576f4-5ed9-438e-8ec3-4f3742cdf9b9",
+        "50376415-64ef-40e4-9d56-41565c447c96",
+        "e5041a1f-7c26-479d-846e-0c2e70f8d1a5",
+        "ec150c2c-45cb-4d40-a167-27b3ad516af3",
+        "d76d9cd2-e5ea-451c-9efb-9767bb31d5b3",
+        "02f00bad-200e-44cb-ac4f-29827edf1d08",
+        "c1e715f2-ece9-4733-93d0-5e83fdcf3223",
+        "01a33780-9d3f-4eae-88c1-98b449c37c32",
+        "a1ad1805-405a-498c-96e4-3946a2fc6643",
+        "f6268562-e0da-4f15-a89a-d350c4d9d28f",
+        "764c01e8-91cf-4754-bbaa-138679c41451"
+      ],
+      "selectedTasks": [
+        {
+          "TaskID": "63a2b448-f810-477a-9227-903298c876ff",
+          "Duration": 1,
+          "Impact": 3
+        },
+        {
+          "TaskID": "927d8a95-9c87-4fbd-8b76-e4e70ced6bf2",
+          "Duration": 7,
+          "Impact": 8
+        },
+        {
+          "TaskID": "098d21d7-fe3c-4ae6-a816-8b43da352e93",
+          "Duration": 1,
+          "Impact": 2
+        },
+        {
+          "TaskID": "628064f6-c040-42b1-b199-bfc3c41ac53d",
+          "Duration": 1,
+          "Impact": 9
+        },
+        {
+          "TaskID": "c1fae250-d2a3-4993-b634-0f1e7013e18c",
+          "Duration": 3,
+          "Impact": 5
+        },
+        {
+          "TaskID": "2b5c4b27-a6a6-48f2-85b1-0ed21b9620b1",
+          "Duration": 5,
+          "Impact": 6
+        },
+        {
+          "TaskID": "dd9576f4-5ed9-438e-8ec3-4f3742cdf9b9",
+          "Duration": 6,
+          "Impact": 10
+        },
+        {
+          "TaskID": "50376415-64ef-40e4-9d56-41565c447c96",
+          "Duration": 1,
+          "Impact": 10
+        },
+        {
+          "TaskID": "e5041a1f-7c26-479d-846e-0c2e70f8d1a5",
+          "Duration": 2,
+          "Impact": 3
+        },
+        {
+          "TaskID": "ec150c2c-45cb-4d40-a167-27b3ad516af3",
+          "Duration": 8,
+          "Impact": 8
+        },
+        {
+          "TaskID": "d76d9cd2-e5ea-451c-9efb-9767bb31d5b3",
+          "Duration": 5,
+          "Impact": 9
+        },
+        {
+          "TaskID": "02f00bad-200e-44cb-ac4f-29827edf1d08",
+          "Duration": 4,
+          "Impact": 9
+        },
+        {
+          "TaskID": "c1e715f2-ece9-4733-93d0-5e83fdcf3223",
+          "Duration": 3,
+          "Impact": 8
+        },
+        {
+          "TaskID": "01a33780-9d3f-4eae-88c1-98b449c37c32",
+          "Duration": 4,
+          "Impact": 7
+        },
+        {
+          "TaskID": "a1ad1805-405a-498c-96e4-3946a2fc6643",
+          "Duration": 4,
+          "Impact": 9
+        },
+        {
+          "TaskID": "f6268562-e0da-4f15-a89a-d350c4d9d28f",
+          "Duration": 2,
+          "Impact": 3
+        },
+        {
+          "TaskID": "764c01e8-91cf-4754-bbaa-138679c41451",
+          "Duration": 3,
+          "Impact": 4
+        }
+      ]
+    },
+    {
+      "depotId": 2,
+      "mechanicHours": 135,
+      "totalDuration": 131,
+      "totalImpact": 159,
+      "selectedTaskIds": [
+        "63a2b448-f810-477a-9227-903298c876ff",
+        "a6366f7c-623e-41c4-83c0-38f2e8707326",
+        "927d8a95-9c87-4fbd-8b76-e4e70ced6bf2",
+        "25a11368-b8b2-4340-a6c1-ae6e483f218b",
+        "098d21d7-fe3c-4ae6-a816-8b43da352e93",
+        "628064f6-c040-42b1-b199-bfc3c41ac53d",
+        "acf1a005-e4d9-4cb5-862d-a48d45ed03b3",
+        "6c681413-7628-4276-b13a-763aaa46d108",
+        "d41e1af6-9ced-459b-89b6-f990d0283493",
+        "c1fae250-d2a3-4993-b634-0f1e7013e18c",
+        "2b5c4b27-a6a6-48f2-85b1-0ed21b9620b1",
+        "2f0f979b-8236-4ab1-af40-fee1b29126cf",
+        "50ada55b-d741-4bcd-af4b-e5ff5d4ff9af",
+        "5fde83c6-1330-40cd-bf95-eb484ff410de",
+        "dd9576f4-5ed9-438e-8ec3-4f3742cdf9b9",
+        "50376415-64ef-40e4-9d56-41565c447c96",
+        "e5041a1f-7c26-479d-846e-0c2e70f8d1a5",
+        "ec150c2c-45cb-4d40-a167-27b3ad516af3",
+        "7a8d0442-19db-49a1-97ff-120948947aea",
+        "d76d9cd2-e5ea-451c-9efb-9767bb31d5b3",
+        "02f00bad-200e-44cb-ac4f-29827edf1d08",
+        "61ea1f9a-16d1-4fb3-bef4-a08dec77b5fb",
+        "c1e715f2-ece9-4733-93d0-5e83fdcf3223",
+        "01a33780-9d3f-4eae-88c1-98b449c37c32",
+        "a1ad1805-405a-498c-96e4-3946a2fc6643",
+        "f6268562-e0da-4f15-a89a-d350c4d9d28f",
+        "764c01e8-91cf-4754-bbaa-138679c41451"
+      ],
+      "selectedTasks": [
+        {
+          "TaskID": "63a2b448-f810-477a-9227-903298c876ff",
+          "Duration": 1,
+          "Impact": 3
+        },
+        {
+          "TaskID": "a6366f7c-623e-41c4-83c0-38f2e8707326",
+          "Duration": 8,
+          "Impact": 5
+        },
+        {
+          "TaskID": "927d8a95-9c87-4fbd-8b76-e4e70ced6bf2",
+          "Duration": 7,
+          "Impact": 8
+        },
+        {
+          "TaskID": "25a11368-b8b2-4340-a6c1-ae6e483f218b",
+          "Duration": 8,
+          "Impact": 6
+        },
+        {
+          "TaskID": "098d21d7-fe3c-4ae6-a816-8b43da352e93",
+          "Duration": 1,
+          "Impact": 2
+        },
+        {
+          "TaskID": "628064f6-c040-42b1-b199-bfc3c41ac53d",
+          "Duration": 1,
+          "Impact": 9
+        },
+        {
+          "TaskID": "acf1a005-e4d9-4cb5-862d-a48d45ed03b3",
+          "Duration": 8,
+          "Impact": 3
+        },
+        {
+          "TaskID": "6c681413-7628-4276-b13a-763aaa46d108",
+          "Duration": 5,
+          "Impact": 2
+        },
+        {
+          "TaskID": "d41e1af6-9ced-459b-89b6-f990d0283493",
+          "Duration": 7,
+          "Impact": 7
+        },
+        {
+          "TaskID": "c1fae250-d2a3-4993-b634-0f1e7013e18c",
+          "Duration": 3,
+          "Impact": 5
+        },
+        {
+          "TaskID": "2b5c4b27-a6a6-48f2-85b1-0ed21b9620b1",
+          "Duration": 5,
+          "Impact": 6
+        },
+        {
+          "TaskID": "2f0f979b-8236-4ab1-af40-fee1b29126cf",
+          "Duration": 5,
+          "Impact": 6
+        },
+        {
+          "TaskID": "50ada55b-d741-4bcd-af4b-e5ff5d4ff9af",
+          "Duration": 8,
+          "Impact": 2
+        },
+        {
+          "TaskID": "5fde83c6-1330-40cd-bf95-eb484ff410de",
+          "Duration": 8,
+          "Impact": 5
+        },
+        {
+          "TaskID": "dd9576f4-5ed9-438e-8ec3-4f3742cdf9b9",
+          "Duration": 6,
+          "Impact": 10
+        },
+        {
+          "TaskID": "50376415-64ef-40e4-9d56-41565c447c96",
+          "Duration": 1,
+          "Impact": 10
+        },
+        {
+          "TaskID": "e5041a1f-7c26-479d-846e-0c2e70f8d1a5",
+          "Duration": 2,
+          "Impact": 3
+        },
+        {
+          "TaskID": "ec150c2c-45cb-4d40-a167-27b3ad516af3",
+          "Duration": 8,
+          "Impact": 8
+        },
+        {
+          "TaskID": "7a8d0442-19db-49a1-97ff-120948947aea",
+          "Duration": 7,
+          "Impact": 3
+        },
+        {
+          "TaskID": "d76d9cd2-e5ea-451c-9efb-9767bb31d5b3",
+          "Duration": 5,
+          "Impact": 9
+        },
+        {
+          "TaskID": "02f00bad-200e-44cb-ac4f-29827edf1d08",
+          "Duration": 4,
+          "Impact": 9
+        },
+        {
+          "TaskID": "61ea1f9a-16d1-4fb3-bef4-a08dec77b5fb",
+          "Duration": 7,
+          "Impact": 7
+        },
+        {
+          "TaskID": "c1e715f2-ece9-4733-93d0-5e83fdcf3223",
+          "Duration": 3,
+          "Impact": 8
+        },
+        {
+          "TaskID": "01a33780-9d3f-4eae-88c1-98b449c37c32",
+          "Duration": 4,
+          "Impact": 7
+        },
+        {
+          "TaskID": "a1ad1805-405a-498c-96e4-3946a2fc6643",
+          "Duration": 4,
+          "Impact": 9
+        },
+        {
+          "TaskID": "f6268562-e0da-4f15-a89a-d350c4d9d28f",
+          "Duration": 2,
+          "Impact": 3
+        },
+        {
+          "TaskID": "764c01e8-91cf-4754-bbaa-138679c41451",
+          "Duration": 3,
+          "Impact": 4
+        }
+      ]
+    }
+  ]
+}
