@@ -22,6 +22,6 @@ MIDDLEWARE = [
 ]
 ```
 
-Configure a `request_logger` logger in Django settings. The starter services already write to `logs/app.log`.
+Configure a `request_logger` logger in Django settings. Both Django services in this repo already write to `logs/app.log`.
 
 The package exposes `logging_middleware.logger.get_logger()` so APIs use centralized logging configuration instead of direct console logging.

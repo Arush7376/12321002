@@ -1,5 +1,5 @@
 class BaseRepository:
-    """Small repository base for future persistence adapters."""
+    """Small repository base for model queries."""
 
     model = None
 

@@ -1,4 +1,4 @@
 class BaseAPIClient:
-    """Base class for future external service clients."""
+    """Common settings for external API clients."""
 
     timeout_seconds = 10

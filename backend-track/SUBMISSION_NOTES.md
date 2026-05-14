@@ -27,5 +27,5 @@ For the priority inbox, I used a priority rule where placement notifications com
 ## Current Limitations
 
 - The evaluation APIs are external, so results can change when the APIs return a new dataset.
-- The Django apps are scaffolded for extension, but the main evaluation logic is kept in service classes.
+- The Django apps include extra folders for normal backend layers, but the main evaluation logic is kept in service classes.
 - Database models are not added for the evaluation data because the instructions say not to store the fetched API data in a database.

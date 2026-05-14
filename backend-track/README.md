@@ -1,6 +1,6 @@
 # backend-track
 
-This repository contains my backend evaluation work for the Backend Track. I kept the two problem statements separate because the vehicle scheduling task and notification priority task have different responsibilities, but they share the same basic Django/DRF setup and logging middleware.
+This repository contains my backend evaluation work for the Backend Track. I kept the vehicle scheduling task and notification priority task separate because they solve different problems, but both use the same Django/DRF setup and shared logging middleware.
 
 ## Projects
 
@@ -8,7 +8,7 @@ This repository contains my backend evaluation work for the Backend Track. I kep
 - `notification_app_be`: fetches notifications and ranks the top 10 unread items for a priority inbox.
 - `logging_middleware`: reusable Django middleware for request logging.
 - `docs`: notes about structure and logging.
-- `screenshots`: place for output/API screenshots.
+- `screenshots`: output/API screenshots.
 
 ## Setup
 
@@ -92,4 +92,4 @@ The request middleware writes JSON logs to `logs/app.log` using `RotatingFileHan
 - Vehicle scheduling is solved using 0/1 knapsack dynamic programming.
 - Notification priority uses type weight first and timestamp second.
 - The code does not hard-code API data; API responses are stored separately for review.
-- The Django structure leaves space for auth, websocket notifications, caching, and background jobs if the project is extended.
+- The Django structure leaves space to add auth, websocket notifications, caching, and background jobs later.

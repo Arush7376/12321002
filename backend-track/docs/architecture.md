@@ -3,10 +3,10 @@
 ## Service Boundaries
 
 - `vehicle_maintenance_scheduler`: owns vehicle and maintenance scheduling workflows.
-- `notification_app_be`: owns notification queueing, provider delivery, and future websocket fan-out.
+- `notification_app_be`: owns the notification priority inbox logic and can later add provider delivery.
 - `logging_middleware`: shared request logging package used by both services.
 
-## Clean Architecture Layers
+## Folder Layers
 
 - `api`: DRF routing and versioned presentation layer.
 - `serializers`: request/response validation and transformation.
