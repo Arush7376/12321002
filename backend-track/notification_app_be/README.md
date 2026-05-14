@@ -1,6 +1,6 @@
 # notification_app_be
 
-Django REST Framework service for queue-based notification delivery.
+This service contains the notification priority inbox solution. It fetches notifications from the evaluation API and returns the top 10 unread notifications based on type priority and recency.
 
 ## Setup
 
@@ -24,7 +24,6 @@ python notification_app_be/src/manage.py runserver 0.0.0.0:8001
 ## Celery
 
 ```bash
-cd notification_app_be
 cd notification_app_be/src
 celery -A config worker --loglevel=info
 ```
@@ -49,9 +48,15 @@ src/
   tests/
 ```
 
-## Future Modules
+## Priority Inbox Logic
 
-Prepared for notification queues, email/SMS provider adapters, websocket notifications, retry policies, and delivery status tracking.
+Priority order:
+
+1. `Placement`
+2. `Result`
+3. `Event`
+
+If two notifications have the same type, the newer one comes first. The implementation keeps a bounded heap, so it can maintain the top 10 efficiently when new notifications keep coming in.
 
 ## Logging
 

@@ -2,35 +2,50 @@
 
 ## Architecture Diagram
 
-Placeholder for high-level system diagram covering API, PostgreSQL, Redis, Celery workers, notification providers, and websocket gateway.
+```text
+Client
+  |
+  v
+Django REST API
+  |
+  +--> PostgreSQL for durable notification records
+  |
+  +--> Redis queue
+          |
+          v
+       Celery worker
+          |
+          +--> Email/SMS provider
+          +--> WebSocket push layer
+```
 
 ## Queue-Based Notification Flow
 
-Placeholder for producer, queue, worker, provider adapter, status persistence, and callback flow.
+The API accepts notification requests and persists them with an initial status. A Celery task is pushed to Redis. Workers consume the task, call the required provider adapter, and update the delivery status. This keeps the HTTP request fast and moves slow provider calls to the background.
 
 ## Retry Mechanism
 
-Placeholder for exponential backoff, dead-letter queues, idempotency keys, provider-specific retry policies, and poison message handling.
+Retries should use exponential backoff. Each notification should carry an idempotency key so the same notification is not delivered twice if a worker crashes after sending but before updating the database. Failed items after the retry limit can be moved to a dead-letter queue for manual review.
 
 ## Scaling Strategy
 
-Placeholder for horizontal Django scaling, Celery worker autoscaling, Redis sizing, queue partitioning, read replicas, and provider throughput limits.
+Django API instances can scale horizontally behind a load balancer. Celery workers can be scaled based on queue depth. Redis should be monitored for memory usage and latency. For high traffic, queues can be split by notification type or priority.
 
 ## WebSocket Notifications
 
-Placeholder for channel subscription model, authentication, fan-out, presence, and fallback polling.
+For websocket notifications, authenticated clients can subscribe to a user-specific channel. When a notification is created or delivered, the backend can publish an event to that channel. If websocket delivery fails, the client can still fetch unread notifications through the REST API.
 
 ## Security
 
-Placeholder for JWT authentication, API permissions, secrets management, provider credential rotation, rate limits, and audit logging.
+JWT authentication can protect user APIs. Provider credentials should stay in environment variables or a secrets manager. Rate limiting is required for public endpoints. Request logs should not store sensitive tokens or full provider secrets.
 
 ## Deployment
 
-Placeholder for AWS, Render, Railway, Docker, CI/CD, migrations, static files, and release rollback strategy.
+The project can be deployed with Docker on Render, Railway, or AWS. The release flow should run tests, apply migrations, and then start Gunicorn and Celery workers. Rollback should keep the previous image available.
 
 ## Monitoring
 
-Placeholder for structured logs, metrics, traces, Celery queue depth, retry rate, provider error rate, alerting, and dashboards.
+Useful metrics include request error rate, request latency, Celery queue depth, retry count, provider error rate, and notification delivery time. Application logs are structured JSON so they can be shipped to a log platform later.
 
 ## Stage 6: Priority Inbox
 

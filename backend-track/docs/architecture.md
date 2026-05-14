@@ -16,6 +16,6 @@
 - `core`: cross-cutting primitives such as responses, exceptions, pagination, and decorators.
 - `middleware`: project-specific middleware extension point.
 
-## Extension Points
+## Possible Extensions
 
-The repository is prepared for JWT auth, scheduler engines, notification queues, websocket notifications, Redis caching, provider integrations, and optimization algorithms.
+The current evaluation code is intentionally small, but the folder layout leaves clear places to add JWT auth, scheduler APIs, notification queues, websocket delivery, Redis caching, provider clients, and more advanced optimization logic.
